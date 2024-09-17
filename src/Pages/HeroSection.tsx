@@ -12,9 +12,9 @@ const HeroSection = () => {
 
   return (
     <div className="relative">
-      <div className="absolute z-10 flex flex-wrap container xl:px-20 w-full  mt-[120px]">
+      <div className="container">
+      <div className="absolute z-10 flex flex-wrap xl:justify-between lg:justify-center w-full  px-20 mt-[120px]">
         <div>
-          
           <h1 className="font-light text-[2.28571rem] tracking-[-1.5px] leading-[1.3] pr-3 max-w-[35rem]">
             <u>Full-stack digital agency</u> crafting innovative solutions: From
             concept to creation, we transform ideas into impactful digital
@@ -28,7 +28,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="absolute z-10 top-80 right-0 left-0 bottom-0 container text-white lg:pr-3 group  px-[5rem] mx-auto">
+      </div>
+      <div className="absolute z-10 top-80 right-0 left-0 bottom-0  text-white lg:pr-3 group px-[5rem] mx-auto">
         <p>Industry:</p>
         <span className="font-bold">Agency</span>
         <div className="min-h-[40px]"></div>
@@ -37,9 +38,10 @@ const HeroSection = () => {
         </h1>
         <span
           className={`absolute text-xs bottom-[-24px] left-0 h-[1px] bg-black transition-all
-                    w-0 group-hover:w-fit
-                    duration-300 ease-out`}
-        ></span>                
+            w-0 group-hover:w-fit
+            duration-300 ease-out`}
+            ></span>
+                        
       </div>
 
         <div className="absolute top-72 bottom-0 w-full z-0 h-[49.47917vh]">
@@ -48,9 +50,8 @@ const HeroSection = () => {
             alt=""
             className="object-cover w-full h-full object-center mb-48"
           />
-          
         <div className="absolute bottom-0 right-0 w-[6.66667rem] z-30">
-          <ul className="absolute top-[-6rem] -translate-y-1/2 right-[3.33333rem] list-none cursor-pointer">
+          <ul className="absolute top-[-8rem] -translate-y-1/2 right-[3.33333rem] list-none cursor-pointer">
             <li
               className="w-[0.88889rem] h-[0.88889rem] mb-[0.88889rem] relative custom-li"
               onClick={() => handleClick(0)}
@@ -68,7 +69,8 @@ const HeroSection = () => {
               onClick={() => handleClick(3)}
             ></li>
           </ul>
-        </div>
+        </div>  
+        
         </div>
     </div>
   );
