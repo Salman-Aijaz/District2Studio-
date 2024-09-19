@@ -25,3 +25,12 @@ code {
   background:black;
   color:white;
 }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #575757;
+}
+::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
