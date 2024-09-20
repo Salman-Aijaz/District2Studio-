@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/images/logo.png';
 
 const navLinks = [
@@ -10,7 +10,6 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
