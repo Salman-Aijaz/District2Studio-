@@ -20,6 +20,10 @@ const HeroSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [currentImage, setCurrentImage] = useState<string>(CoverBob);
+  const [downIndex, setDownIndex] = useState<number>(0);
+  const [currentIndustry, setCurrentIndustry] = useState<string>(downImages[0].industry);
+  const [currentProject, setCurrentProject] = useState<string>(downImages[0].project);
+
   const handleHover = () => {
     setIsHovering(true);
   };
@@ -33,6 +37,21 @@ const HeroSection: React.FC = () => {
   const handleClick = (index) => {
     setActiveIndex(index);
   };
+
+  const handleDownClick = () => {
+    const newIndex = (downIndex + 1) % downImages.length;
+    setDownIndex(newIndex);
+    setCurrentImage(downImages[newIndex].image);
+    setCurrentIndustry(downImages[newIndex].industry);
+    setCurrentProject(downImages[newIndex].project);
+
+    const imageElement = document.querySelector(".image-animation");
+    if (imageElement) {
+      imageElement.classList.remove("image-animation-loaded");
+      setTimeout(() => {
+        imageElement.classList.add("image-animation-loaded");
+      }, 50);
+  };}
 
   useEffect(() => {
     let interval;
@@ -56,17 +75,17 @@ const HeroSection: React.FC = () => {
     fadeUpElements.forEach((el) => {
       setTimeout(() => {
         el.classList.add("fade-up-loaded"); 
-      }, 100); 
+      }, 50); 
     });
   }, []);
 
   useEffect(() => {
-    const imageElements = document.querySelectorAll(".image-animation");
-    imageElements.forEach((el) => {
+    const imageElement = document.querySelector(".image-animation");
+    if (imageElement) {
       setTimeout(() => {
-        el.classList.add("image-animation-loaded"); 
-      }, 300); 
-    });
+        imageElement.classList.add("image-animation-loaded");
+      }, 100); // Start animation a bit after initial render
+    }
   }, []);
 
   return (
@@ -104,10 +123,10 @@ const HeroSection: React.FC = () => {
       
       <div className="absolute z-10 flex flex-col  xl:justify-between lg:justify-center max-w-full mt-[233px] sm:mt-[220px] md:mt-[220px] lg:mt-[220px] px-[1.25rem] md:px-[5.22rem] lg:px-40 xl:px-20 text-white">
       <p>Industry:</p>
-      <span className="font-bold">Agency</span>
+      <span className="font-bold">{currentIndustry}</span>
       <div className="min-h-[70px]"></div>
         <h1 className="text-[4rem] 1.88rem tracking-[-1px] min-w-fit">
-          Est Populo
+        {currentProject}
         </h1>
         <span
           className={`absolute text-xs bottom-[-24px] left-0 h-[1px] bg-black transition-all
@@ -142,7 +161,9 @@ const HeroSection: React.FC = () => {
             ></li>
           </ul>
         </div>
-        <div className="fixed z-4 left-[1rem] bottom-[1rem] sm:left[1.25rem] sm:bottom[1.25rem] md:left-[3.3333rem] md:bottom-[3.3333rem]">
+        <div className="fixed z-4 left-[1rem] bottom-[1rem] 
+        sm:left[1.25rem] sm:bottom[1.25rem] md:left-[3.3333rem] md:bottom-[3.3333rem] cursor-pointer"
+        onClick={handleDownClick}>
           <DownIcon />
         </div>
       </div>

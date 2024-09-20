@@ -30,14 +30,35 @@
 }
 
 /* Image initial state */
-.image-animation {
+/* .image-animation {
   opacity: 0;
-  transform: translateY(150px) scale(1.05); /* Start lower and slightly larger */
-  transition: opacity 1.8s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth long easing */
-}
+  transform: translateY(150px) scale(1.05); 
+  transition: opacity 1.8s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1); } 
 
 /* Triggered state (when in view) */
-.image-animation-loaded {
+/* .image-animation-loaded {
   opacity: 1;
-  transform: translateY(0) scale(1); /* Move to original position and size */
+  transform: translateY(0) scale(1); 
+} */
+
+/* Add keyframes for bottom-to-top animation */
+@keyframes bottomToTop {
+  0% {
+    transform: translateY(100%); /* Start from below */
+    opacity: 0; /* Initially hidden */
+  }
+  100% {
+    transform: translateY(0); /* Move to normal position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.image-animation {
+  position: relative;
+  opacity: 0;
+  transition: none; /* Disable the regular transition */
+}
+
+.image-animation-loaded {
+  animation: bottomToTop 0.8s ease-in-out forwards; /* Start bottom to top animation */
 }
