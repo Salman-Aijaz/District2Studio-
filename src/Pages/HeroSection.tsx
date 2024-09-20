@@ -1,26 +1,87 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DownIcon, RightArrowIcon } from "../assets/Icon/Icon";
 import "../App.css";
-import CoverBob from "../assets/Cover_Bob.jpg";
+import CoverBob from "../assets/images/Cover_Bob.jpg";
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+import Home_Cover_first from "../assets/images/Home_cover_1.jpg"
+import Home_Cover_second from "../assets/images/Home_cover_2.jpg"
+import Home_Cover_third from "../assets/images/Home_cover_3.jpg"
+import Home_Cover_fourth from "../assets/images/Home_cover_5.jpg"
 
-const HeroSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+const bulletImages:string[] = [Home_Cover_first,Home_Cover_second,Home_Cover_third]
+
+const downImages =[
+  {industry:"Fintech",image:CoverBob,project:"Cover Bob"},
+  {industry:"Transportaion",image:Home_Cover_fourth,project:"Something Good"},
+]
+
+const HeroSection: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [currentImage, setCurrentImage] = useState<string>(CoverBob);
+  const handleHover = () => {
+    setIsHovering(true);
+  };
+
+  const handleHoverLeave = () => {
+    setIsHovering(false);
+    setCurrentImage(CoverBob);
+    setActiveIndex(0);
+  };
 
   const handleClick = (index) => {
     setActiveIndex(index);
   };
 
+  useEffect(() => {
+    let interval;
+    if (isHovering) {
+      interval = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % bulletImages.length); 
+      }, 300); 
+
+      return () => clearInterval(interval); 
+    }
+  }, [isHovering]);
+
+  useEffect(() => {
+    if (isHovering) {
+      setCurrentImage(bulletImages[activeIndex]); 
+    }
+  }, [activeIndex, isHovering]);
+
+  useEffect(() => {
+    const fadeUpElements = document.querySelectorAll(".fade-up");
+    fadeUpElements.forEach((el) => {
+      setTimeout(() => {
+        el.classList.add("fade-up-loaded"); 
+      }, 100); 
+    });
+  }, []);
+
+  useEffect(() => {
+    const imageElements = document.querySelectorAll(".image-animation");
+    imageElements.forEach((el) => {
+      setTimeout(() => {
+        el.classList.add("image-animation-loaded"); 
+      }, 300); 
+    });
+  }, []);
+
   return (
     <div className="relative">
-        <div className="absolute z-10 flex flex-wrap gap-14 md:gap-0 xl:justify-between lg:justify-center w-full px-[1.25rem] md:px-20 mt-[20px] xl:mt-[30px]">
+        <div className="absolute z-10 flex flex-wrap gap-14 md:gap-0 xl:justify-between lg:justify-center w-full px-[1.25rem] md:px-20 mt-[85px] xl:mt-[100px]">
           <div>
-            <h1 className="font-light text-[1.2rem] md:text-[2.28571rem] tracking-[-1.5px] leading-[1.3] pr-3 max-w-[35rem]">
+            <h1 className="font-light text-[1.2rem] md:text-[1.8rem] tracking-[-1.5px] leading-[1.3] pr-3 max-w-[35rem] fade-up">
               <u>Full-stack digital agency</u> crafting innovative solutions:
               From concept to creation, we transform ideas into impactful
               digital experiences
             </h1>
           </div>
-          <div className="flex gap-3 self-end items-center lg:pl-3">
+          <div className="flex gap-3 self-end items-center lg:pl-3"
+           onMouseEnter={handleHover}
+           onMouseLeave={handleHoverLeave}>
             <p>We bridge the raw to beautiful</p>
             <div className="cursor-pointer">
               <RightArrowIcon />
@@ -41,11 +102,11 @@ const HeroSection = () => {
             ></span>     
       </div> */}
       
-      <div className="absolute z-10 flex flex-col  xl:justify-between lg:justify-center max-w-full mt-[233px] sm:mt-[220px] md:mt-[250px] lg:mt-[250px] px-[1.25rem] md:px-[5.22rem] lg:px-40 xl:px-20">
+      <div className="absolute z-10 flex flex-col  xl:justify-between lg:justify-center max-w-full mt-[233px] sm:mt-[220px] md:mt-[220px] lg:mt-[220px] px-[1.25rem] md:px-[5.22rem] lg:px-40 xl:px-20 text-white">
       <p>Industry:</p>
       <span className="font-bold">Agency</span>
-      <div className="min-h-[40px]"></div>
-        <h1 className="text-black text-[4rem] tracking-[-1px] min-w-fit">
+      <div className="min-h-[70px]"></div>
+        <h1 className="text-[4rem] 1.88rem tracking-[-1px] min-w-fit">
           Est Populo
         </h1>
         <span
@@ -55,9 +116,9 @@ const HeroSection = () => {
             ></span>
         </div>
 
-      <div className="absolute top-[199px] bottom-0 w-full z-0 h-[49.47917vh]">
+      <div className="absolute top-[199px] bottom-0 w-full z-0 h-[49.47917vh] image-animation">
         <img
-          src={CoverBob}
+           src={currentImage}
           alt=""
           className="object-cover w-full h-full object-center mb-48"
         />
