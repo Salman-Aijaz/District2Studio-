@@ -125,7 +125,7 @@ const HeroSection: React.FC = () => {
         <p>Industry:</p>
         <span className="font-bold">{currentIndustry}</span>
         <div className="min-h-[70px]"></div>
-        <h1 className="text-[4rem] 1.88rem tracking-[-1px] min-w-fit">
+        <h1 className="text-[3rem] sm:text-[4rem]  tracking-[-1px] min-w-fit">
           {currentProject}
         </h1>
         <span
@@ -139,7 +139,7 @@ const HeroSection: React.FC = () => {
         <img
           src={currentImage}
           alt=""
-          className="object-cover w-full h-full object-center mb-48"
+          className="object-cover w-full h-full object-center"
         />
         <div className="absolute bottom-0 right-0 w-[6.66667rem] z-30">
           <ul className="absolute top-[-8rem] -translate-y-1/2 right-[3.33333rem] list-none cursor-pointer">

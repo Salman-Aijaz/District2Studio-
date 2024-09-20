@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav
       className="w-full z-50 transition-all duration-300 mt-6 bg-transparent">
-      <div className="max-w-screen-xl mx-auto flex items-center sm:justify-between md:justify-start h-20 px-4 md:px-12">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between md:justify-start h-20 px-4 md:px-12">
 
 
        {/* Desktop Menu */}
