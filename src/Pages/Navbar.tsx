@@ -10,7 +10,6 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scroll, setScroll] = useState(false);
   const menuRef = useRef(null);
 
   const toggleNavbar = () => {
@@ -18,24 +17,10 @@ const Navbar = () => {
   };
 
   
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <nav
-      className={`w-full z-50 transition-all duration-300 mt-6 ${
-        scroll ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
-    >
+      className="w-full z-50 transition-all duration-300 mt-6 bg-transparent">
       <div className="max-w-screen-xl mx-auto flex items-center sm:justify-between md:justify-start h-20 px-4 md:px-12">
 
 
