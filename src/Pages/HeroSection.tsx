@@ -142,7 +142,7 @@ const HeroSection: React.FC = () => {
           className="object-cover w-full h-full object-center"
         />
         <div className="absolute bottom-0 right-0 w-[6.66667rem] z-30">
-          <ul className="absolute top-[-8rem] -translate-y-1/2 right-[3.33333rem] list-none cursor-pointer">
+          <ul className="absolute top-[-8rem] -translate-y-1/2 right-[0.33333rem] sm:right-[3.33333rem] list-none cursor-pointer">
             <li
               className="w-[0.88889rem] h-[0.88889rem] mb-[0.88889rem] relative custom-li"
               onClick={() => handleClick(0)}
