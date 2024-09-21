@@ -101,9 +101,11 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="relative">
-      <div className="absolute z-10 flex flex-wrap gap-14 md:gap-0 xl:justify-between lg:justify-center w-full px-[1.25rem] md:px-20 mt-[85px] xl:mt-[100px]">
+      <div className="absolute z-10 flex flex-wrap gap-14 md:gap-0 xl:justify-between 
+      lg:justify-center w-full px-[1.25rem] md:px-20 mt-[85px] xl:mt-[100px]">
         <div>
-          <h1 className="font-light text-[1.2rem] md:text-[1.8rem] tracking-[-1.5px] leading-[1.3] pr-3 max-w-[35rem] fade-up">
+          <h1 className="font-light text-[1.2rem] md:text-[1.8rem] tracking-[-1.5px] 
+          leading-[1.3] pr-3 max-w-[35rem] fade-up">
             <u>Full-stack digital agency</u> crafting innovative solutions: From
             concept to creation, we transform ideas into impactful digital
             experiences
@@ -121,7 +123,9 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute z-10 flex flex-col  xl:justify-between lg:justify-center max-w-full mt-[233px] sm:mt-[220px] md:mt-[220px] lg:mt-[220px] px-[1.25rem] md:px-[5.22rem] lg:px-40 xl:px-20 text-white">
+      <div className="absolute z-10 flex flex-col  xl:justify-between 
+      lg:justify-center max-w-full mt-[233px] sm:mt-[220px] md:mt-[220px] 
+      lg:mt-[220px] px-[1.25rem] md:px-[5.22rem] lg:px-40 xl:px-20 text-white">
         <p>Industry:</p>
         <span className="font-bold">{currentIndustry}</span>
         <div className="min-h-[70px]"></div>
